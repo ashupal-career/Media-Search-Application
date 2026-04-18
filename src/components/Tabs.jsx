@@ -4,7 +4,7 @@ import { setActiveTabs } from '../redux/features/searchSlice'
 
 const Tabs = () => {
 
-const tabs = ['photos', 'videos', 'GIF']
+const tabs = ['photos', 'videos', 'gif']
 
 const dispatch = useDispatch()
 
