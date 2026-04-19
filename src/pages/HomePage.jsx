@@ -7,8 +7,7 @@ const HomePage = () => {
 
     const { query } = useSelector((store) => store.search)
 
-
-
+    
 
     return (
         <div>
