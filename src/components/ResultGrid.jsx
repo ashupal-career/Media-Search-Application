@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { fetchPhotos, fetchVideos, fetchGIF } from '../api/mediaApi'
-import { setQuery, setLoading, setError,setResults } from '../redux/features/searchSlice'
+import { setQuery, setLoading, setError, setResults } from '../redux/features/searchSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -8,24 +8,30 @@ const ResultGrid = () => {
     
     const {query, activeTab, results, loading, error} = useSelector((store) => store.search)
 
-    const getData = async ()=>{
-        let data
-        if(activeTab == 'photos'){
-            data =  await fetchPhotos(query)
+    useEffect(function () {
+        const getData = async () => {
+            let data
+            if(activeTab == 'photos') {
+                let response =  await fetchPhotos(query)
+                data = response.results
+            }
+            if(activeTab == 'videos') {
+                let response =  await fetchVideos(query)
+                data = response.videos
+            }
+            if(activeTab == 'gif') {
+                let response =  await fetchGIF(query)
+                data = response.data.results
+            }
+            console.log(data);
         }
-        if(activeTab == 'videos'){
-            data =  await fetchVideos(query)
-        }
-        if(activeTab == 'gif'){
-            data =  await fetchGIF(query)
-        }
-    }
+            getData()
+    }, [query, activeTab])
 
-  return (
-    <div>
-        <button onClick={getData}>GetData</button>
-    </div>
-  )
+    return (
+        <div>
+        </div>
+    )
 }
 
 export default ResultGrid
