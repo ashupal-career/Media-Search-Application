@@ -5,5 +5,6 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  jsx: 'react'
+  jsx: 'react',
+  base: "/Media-Search-Application/"
 })
