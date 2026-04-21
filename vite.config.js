@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   jsx: 'react',
-  base: "/Media-Search-Application/"
+  base: "/"
 })
